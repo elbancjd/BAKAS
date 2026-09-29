@@ -1,0 +1,45 @@
+:root {
+    --bg-cream: #F5EEE4;
+    --primary-rust: #9F4E38;
+    --secondary-blue: #53667B;
+    --card-cream: #EAE2D6;
+    --text-dark: #1C1C1C;
+    --white: #FFFFFF;
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: var(--bg-cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3, h4, .brand-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* !!! Layout and responsive styles to be added in next commit */
