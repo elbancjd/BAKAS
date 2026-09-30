@@ -8,54 +8,135 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header id="main-header">
         <nav class="container">
-            <div class="brand-logo">BAKAS</div>
-            <ul class="nav-links">
-                <li><a href="#explore">EXPLORE</a></li>
-                <li><a href="#eras">ERAS</a></li>
-                <li><a href="#artists">ARTISTS</a></li>
-                <li><a href="#about">ABOUT</a></li>
-            </ul>
+            <div class="brand-logo"><a href="#hero">BAKAS</a></div>
+            <div class="nav-links">
+                <a href="#explore" class="nav-item">EXPLORE</a>
+                <a href="#eras" class="nav-item">ERAS</a>
+                <a href="#artists" class="nav-item">ARTISTS</a>
+                <a href="#about" class="nav-item">ABOUT</a>
+                <button class="search-toggle"><i class="fas fa-search"></i></button>
+            </div>
         </nav>
     </header>
 
     <main>
-        <section id="hero">
-            <h1>Art is a record of time.</h1>
-            <p>Explore the artworks, artists, and historical moments that shaped the visual culture of the Philippines.</p>
+        <!-- Hero Section -->
+        <section class="container hero section-block" id="hero">
+            <div class="hero-text">
+                <h1>Art is a<br>record of<br>time.</h1>
+                <p>Explore the artworks, artists, and historical moments that shaped the visual culture of the Philippines.</p>
+                <a href="#explore" class="btn">EXPLORE THE ARCHIVE</a>
+            </div>
+            <div class="hero-carousel">
+                <div class="carousel-images">
+                    <img id="main-carousel-img" src="https://via.placeholder.com/350x500/9F4E38/FFFFFF?text=Classic+Artwork+1" alt="Featured Art 1">
+                    <img id="sub-carousel-img" src="https://via.placeholder.com/150x400/53667B/FFFFFF?text=Landscape+1" alt="Featured Art 2">
+                </div>
+            </div>
         </section>
 
-        <section id="explore">
-            <h2>Discover the works.</h2>
-            <!-- Gallery grid -->
+        <!-- Explore Section -->
+        <section class="container explore section-block" id="explore">
+            <div class="section-header">
+                <span class="section-subtitle">EXPLORE</span>
+                <h2 class="section-title">Discover the works.</h2>
+                <p>Discover the stories behind Philippine art across different historical periods.</p>
+            </div>
+            
+            <div class="filters" id="explore-filters">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="pre-colonial">PRE-COLONIAL</button>
+                <button class="filter-btn" data-filter="spanish">SPANISH</button>
+                <button class="filter-btn" data-filter="american">AMERICAN</button>
+                <button class="filter-btn" data-filter="modern">MODERN/CONTEMP</button>
+            </div>
+
+            <div class="grid-gallery" id="explore-gallery">
+                <div class="gallery-item" data-category="spanish">
+                    <img src="https://via.placeholder.com/400x300/1C1C1C/FFFFFF?text=Spoliarium" alt="Spoliarium">
+                    <div class="gallery-caption">
+                        <h4>Spoliarium</h4>
+                        <p>Juan Luna, 1884 • Spanish Colonial</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="american">
+                    <img src="https://via.placeholder.com/400x300/53667B/FFFFFF?text=Planting+Rice" alt="Planting Rice">
+                    <div class="gallery-caption">
+                        <h4>Planting Rice</h4>
+                        <p>Fernando Amorsolo, 1922 • American Period</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="pre-colonial">
+                    <img src="https://via.placeholder.com/400x300/9F4E38/FFFFFF?text=Manunggul+Jar" alt="Manunggul Jar">
+                    <div class="gallery-caption">
+                        <h4>Manunggul Jar</h4>
+                        <p>Neolithic Period • Pre-Colonial</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="center-btn">
+                <button class="btn btn-outline">VIEW MORE WORKS</button>
+            </div>
         </section>
 
-        <section id="eras">
-            <h2>Art across eras.</h2>
-            <!-- Timeline -->
-        </section>
+        <!-- Artists Section -->
+        <section class="container artists section-block" id="artists">
+            <div class="section-header">
+                <span class="section-subtitle">ARTISTS</span>
+                <h2 class="section-title">The people behind the art.</h2>
+            </div>
 
-        <section id="artists">
-            <h2>The people behind the art.</h2>
-            <!-- Artist cards -->
+            <div class="artist-grid" id="artist-gallery">
+                <div class="artist-card" data-category="painter">
+                    <img src="https://via.placeholder.com/150/1C1C1C/FFFFFF?text=JL" alt="Juan Luna" class="artist-img">
+                    <h4 class="artist-name">Juan Luna</h4>
+                    <p class="artist-dates">1857 — 1899</p>
+                    <p class="artist-role">PAINTER</p>
+                    <p class="artist-era">Spanish Colonial</p>
+                </div>
+                <div class="artist-card" data-category="painter">
+                    <img src="https://via.placeholder.com/150/53667B/FFFFFF?text=FH" alt="Felix Hidalgo" class="artist-img">
+                    <h4 class="artist-name">Felix Resurreccion Hidalgo</h4>
+                    <p class="artist-dates">1855 — 1913</p>
+                    <p class="artist-role">PAINTER</p>
+                </div>
+                <div class="artist-card" data-category="illustrator">
+                    <img src="https://via.placeholder.com/150/9F4E38/FFFFFF?text=JP" alt="Jorge Pineda" class="artist-img">
+                    <h4 class="artist-name">Jorge Pineda</h4>
+                    <p class="artist-dates">1879 — 1946</p>
+                    <p class="artist-role">ILLUSTRATOR</p>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer id="about">
+    <footer id="about" class="section-block">
         <div class="container">
-            <h2>Art is a record of time.</h2>
-            <p>BAKAS is a digital exploration of Philippine art through the history and culture surrounding it.</p>
-            <p>© 2026 BAKAS</p>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="section-subtitle">ABOUT BAKAS</span>
+                    <h2>Art is a record<br>of time.</h2>
+                </div>
+                <div class="footer-right">
+                    <p>BAKAS is a digital exploration of Philippine art through the history and culture surrounding it.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- JS Link -->
     <script src="script.js"></script>
 </body>
 </html>
