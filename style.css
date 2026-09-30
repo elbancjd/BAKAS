@@ -42,4 +42,170 @@ a {
     padding: 0 20px;
 }
 
-/* !!! Layout and responsive styles to be added in next commit */
+/* New updates starts here */
+
+/* NAVIGATION */
+header {
+    padding: 20px 0;
+    background-color: var(--bg-cream);
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-links {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+.search-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* BUTTONS */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-rust);
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    border: 1px solid var(--primary-rust);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn:hover {
+    background-color: #823d2b; 
+}
+.btn-outline {
+    background: transparent;
+    color: var(--primary-rust);
+    border: 1px solid var(--primary-rust);
+}
+.btn-outline:hover {
+    background-color: var(--primary-rust);
+    color: var(--white);
+}
+
+/* HERO SECTION */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 0;
+    gap: 40px;
+}
+.hero-text {
+    flex: 1;
+    max-width: 500px;
+}
+.hero h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+.carousel-images {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.carousel-images img {
+    border-radius: 12px;
+    object-fit: cover;
+}
+#main-carousel-img { width: 350px; height: 500px; }
+#sub-carousel-img { width: 150px; height: 400px; }
+
+/* EXPLORE GALLERY */
+.section-block { padding: 80px 0; }
+.section-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    display: block;
+}
+.section-title { font-size: 3rem; margin-bottom: 15px; }
+
+.filters { display: flex; gap: 10px; margin-bottom: 30px; }
+.filter-btn {
+    padding: 6px 20px;
+    border: 1px solid var(--text-dark);
+    border-radius: 20px;
+    background: transparent;
+    cursor: pointer;
+}
+.filter-btn.active {
+    background-color: var(--primary-rust);
+    color: var(--white);
+}
+
+.grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+.gallery-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 280px;
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    color: var(--white);
+}
+
+/* ARTISTS SECTION */
+.artist-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.artist-card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+.artist-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    object-fit: cover;
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--text-dark);
+    color: var(--white);
+}
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+.social-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
