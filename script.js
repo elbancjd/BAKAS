@@ -6,4 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // TODO: Implement mobile menu
     // TODO: Implement image carousel
     // TODO: Implement active scroll spy
+
+    // No changes as of today
 });
