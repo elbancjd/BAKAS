@@ -209,3 +209,58 @@ footer {
     font-size: 1.5rem;
     margin-top: 20px;
 }
+
+
+/* Day 3 Updates */
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 40px;
+    }
+    .section-block {
+        padding: 100px 0;
+    }
+    .hero { 
+        flex-direction: column; 
+        text-align: center; 
+        padding: 100px 0;
+        gap: 60px;
+    }
+    .hero-text { max-width: 100%; }
+    .hero-carousel { width: 100%; justify-content: center; }
+    .grid-gallery { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .artist-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 30px;
+    }
+    .section-block {
+        padding: 80px 0;
+    }
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    
+    .hero { gap: 40px; padding: 60px 0; }
+    .hero h1 { font-size: 3rem; }
+    
+    #sub-carousel-img { display: none; }
+    #main-carousel-img { width: 100%; max-width: 350px; height: auto; aspect-ratio: 3/4; }
+
+    .grid-gallery { grid-template-columns: 1fr; gap: 40px; }
+    .artist-grid { grid-template-columns: 1fr; gap: 30px; }
+    
+    .filters { justify-content: center; }
+
+    .timeline { padding: 20px 0; }
+    .timeline::after { left: 31px; }
+    .timeline-item { width: 100%; padding-left: 70px; padding-right: 0; margin-bottom: 40px;}
+    .timeline-item::after { left: 23px; }
+    .right { left: 0; }
+    .left { text-align: left; }
+
+    .footer-content { grid-template-columns: 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+}
