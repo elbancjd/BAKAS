@@ -1,10 +1,16 @@
 <!DOCTYPE html>
+<!--
+    IWEB Final Output
+    Elbanbuena, Christine Joy DC.
+    WD-201
+    October 2026
+-->
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BAKAS</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
@@ -23,22 +29,51 @@
                 <a href="#about" class="nav-item">ABOUT</a>
                 <button class="search-toggle"><i class="fas fa-search"></i></button>
             </div>
+            <button class="hamburger" id="menu-btn"><i class="fas fa-bars"></i></button>
         </nav>
+        
+        <!-- Search Dropdown -->
+        <div class="search-dropdown" id="search-dropdown">
+            <input type="text" placeholder="Search for artists, eras, or works..." id="desktop-search-input">
+            <button id="desktop-search-btn" class="btn">Search</button>
+        </div>
     </header>
 
-    <main>
+    <!-- Mobile Burger Meun -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <button class="close-menu" id="close-btn"><i class="fas fa-times"></i></button>
+            <div class="mobile-brand">
+                <span class="brand-logo">BAKAS</span>
+            </div>
+            <div class="mobile-search-container">
+                <input type="text" class="search-bar" id="mobile-search-input" placeholder="Search for artists...">
+                <button id="mobile-search-btn" class="mobile-search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <ul class="mobile-links">
+                <li><a href="#explore" class="mobile-nav-item">EXPLORE</a> <i class="fas fa-chevron-right"></i></li>
+                <li><a href="#eras" class="mobile-nav-item">ERAS</a> <i class="fas fa-chevron-right"></i></li>
+                <li><a href="#artists" class="mobile-nav-item">ARTISTS</a> <i class="fas fa-chevron-right"></i></li>
+                <li><a href="#about" class="mobile-nav-item">ABOUT</a> <i class="fas fa-chevron-right"></i></li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="main">
         <!-- Hero Section -->
-        <section class="container hero section-block" id="hero">
+        <section class="container hero" id="hero">
             <div class="hero-text">
                 <h1>Art is a<br>record of<br>time.</h1>
                 <p>Explore the artworks, artists, and historical moments that shaped the visual culture of the Philippines.</p>
                 <a href="#explore" class="btn">EXPLORE THE ARCHIVE</a>
             </div>
             <div class="hero-carousel">
+                <button id="prev-slide" class="carousel-btn"><i class="fas fa-chevron-left"></i></button>
                 <div class="carousel-images">
-                    <img id="main-carousel-img" src="https://via.placeholder.com/350x500/9F4E38/FFFFFF?text=Classic+Artwork+1" alt="Featured Art 1">
-                    <img id="sub-carousel-img" src="https://via.placeholder.com/150x400/53667B/FFFFFF?text=Landscape+1" alt="Featured Art 2">
+                    <img id="main-carousel-img" src="Images/Artworks/Spoliarium.jpg" alt="Featured Art 1">
+                    <img id="sub-carousel-img" src="Images/Artworks/Las Virgenes Cristianas.jpg" alt="Featured Art 2">
                 </div>
+                <button id="next-slide" class="carousel-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
@@ -55,35 +90,86 @@
                 <button class="filter-btn" data-filter="pre-colonial">PRE-COLONIAL</button>
                 <button class="filter-btn" data-filter="spanish">SPANISH</button>
                 <button class="filter-btn" data-filter="american">AMERICAN</button>
-                <button class="filter-btn" data-filter="modern">MODERN/CONTEMP</button>
+                <button class="filter-btn" data-filter="modern">MODERN</button>
             </div>
 
             <div class="grid-gallery" id="explore-gallery">
                 <div class="gallery-item" data-category="spanish">
-                    <img src="https://via.placeholder.com/400x300/1C1C1C/FFFFFF?text=Spoliarium" alt="Spoliarium">
+                    <img src="Images/Artworks/Spoliarium.jpg" alt="Spoliarium">
                     <div class="gallery-caption">
                         <h4>Spoliarium</h4>
                         <p>Juan Luna, 1884 • Spanish Colonial</p>
                     </div>
                 </div>
                 <div class="gallery-item" data-category="american">
-                    <img src="https://via.placeholder.com/400x300/53667B/FFFFFF?text=Planting+Rice" alt="Planting Rice">
+                    <img src="Images/Artworks/Planting Rice.jpg" alt="Planting Rice">
                     <div class="gallery-caption">
                         <h4>Planting Rice</h4>
                         <p>Fernando Amorsolo, 1922 • American Period</p>
                     </div>
                 </div>
+                <div class="gallery-item" data-category="modern">
+                    <img src="Images/Artworks/The Builders.jpg" alt="The Builders">
+                    <div class="gallery-caption">
+                        <h4>The Builders</h4>
+                        <p>Victorio Edades, 1928 • Modern</p>
+                    </div>
+                </div>
                 <div class="gallery-item" data-category="pre-colonial">
-                    <img src="https://via.placeholder.com/400x300/9F4E38/FFFFFF?text=Manunggul+Jar" alt="Manunggul Jar">
+                    <img src="Images/Artworks/Manunggul Jar.jpg" alt="Manunggul Jar">
                     <div class="gallery-caption">
                         <h4>Manunggul Jar</h4>
                         <p>Neolithic Period • Pre-Colonial</p>
                     </div>
                 </div>
+                <div class="gallery-item" data-category="spanish">
+                    <img src="Images/Artworks/Las Virgenes Cristianas.jpg" alt="Las Virgenes Cristianas">
+                    <div class="gallery-caption">
+                        <h4>Las Virgenes Cristianas</h4>
+                        <p>Felix Resurreccion Hidalgo, 1884 • Spanish Colonial</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="modern">
+                    <img src="Images/Artworks/Genesis.jpg" alt="Genesis">
+                    <div class="gallery-caption">
+                        <h4>Genesis</h4>
+                        <p>Hernando R. Ocampo, 1968 • Modern</p>
+                    </div>
+                </div>
             </div>
             
             <div class="center-btn">
-                <button class="btn btn-outline">VIEW MORE WORKS</button>
+                <a href="#" class="btn btn-outline">VIEW MORE WORKS</a>
+            </div>
+        </section>
+
+        <!-- Eras Section -->
+        <section class="container eras section-block" id="eras">
+            <div class="section-header">
+                <span class="section-subtitle">ERAS</span>
+                <h2 class="section-title">Art across eras.</h2>
+                <p>To understand Philippine art, we first need to understand the world surrounding it.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-date">1521 — 1898</span>
+                        <h3 class="timeline-title">Spanish Colonial</h3>
+                        <p>Religious motifs, the introduction of oil painting, and the emergence of the illustrado class.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-date">1898 — 1946</span>
+                        <h3 class="timeline-title">American Period</h3>
+                        <p>The rise of illustration, commercial art, and the idyllic rural landscapes that defined early modernism.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="center-btn">
+                <a href="#" class="btn btn-outline">LEARN MORE</a>
             </div>
         </section>
 
@@ -92,32 +178,55 @@
             <div class="section-header">
                 <span class="section-subtitle">ARTISTS</span>
                 <h2 class="section-title">The people behind the art.</h2>
+                <p>Explore the artists whose work reflected, challenged, and shaped Philippine visual culture.</p>
+            </div>
+
+            <div class="filters" id="artist-filters">
+                <span class="filter-label">Filter by:</span>
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="painter">Painters</button>
+                <button class="filter-btn" data-filter="sculptor">Sculptors</button>
+                <button class="filter-btn" data-filter="illustrator">Illustrators</button>
             </div>
 
             <div class="artist-grid" id="artist-gallery">
                 <div class="artist-card" data-category="painter">
-                    <img src="https://via.placeholder.com/150/1C1C1C/FFFFFF?text=JL" alt="Juan Luna" class="artist-img">
+                    <img src="Images/Artists/Juan Luna.png" alt="Juan Luna" class="artist-img">
                     <h4 class="artist-name">Juan Luna</h4>
                     <p class="artist-dates">1857 — 1899</p>
                     <p class="artist-role">PAINTER</p>
                     <p class="artist-era">Spanish Colonial</p>
                 </div>
                 <div class="artist-card" data-category="painter">
-                    <img src="https://via.placeholder.com/150/53667B/FFFFFF?text=FH" alt="Felix Hidalgo" class="artist-img">
+                    <img src="Images/Artists/Felix Resurreccion Hidalgo.jpg" alt="Felix Hidalgo" class="artist-img">
                     <h4 class="artist-name">Felix Resurreccion Hidalgo</h4>
                     <p class="artist-dates">1855 — 1913</p>
                     <p class="artist-role">PAINTER</p>
+                    <p class="artist-era">Spanish Colonial</p>
                 </div>
-                <div class="artist-card" data-category="illustrator">
-                    <img src="https://via.placeholder.com/150/9F4E38/FFFFFF?text=JP" alt="Jorge Pineda" class="artist-img">
-                    <h4 class="artist-name">Jorge Pineda</h4>
-                    <p class="artist-dates">1879 — 1946</p>
-                    <p class="artist-role">ILLUSTRATOR</p>
+                <div class="artist-card" data-category="painter">
+                    <img src="Images/Artists/Fernando Amorsolo.png" alt="Fernando Amorsolo" class="artist-img">
+                    <h4 class="artist-name">Fernando Amorsolo</h4>
+                    <p class="artist-dates">1892 — 1972</p>
+                    <p class="artist-role">PAINTER</p>
+                    <p class="artist-era">American Period</p>
                 </div>
+                <div class="artist-card" data-category="sculptor">
+                    <img src="Images/Artists/Guillermo Tolentino.jpg" alt="Guillermo Tolentino" class="artist-img">
+                    <h4 class="artist-name">Guillermo Tolentino</h4>
+                    <p class="artist-dates">1890 — 1976</p>
+                    <p class="artist-role">SCULPTOR</p>
+                    <p class="artist-era">American Period</p>
+                </div>
+            </div>
+
+            <div class="center-btn" style="margin-top: 40px;">
+                <a href="#" class="btn btn-outline">GET TO KNOW MORE</a>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer id="about" class="section-block">
         <div class="container">
             <div class="footer-content">
@@ -127,12 +236,23 @@
                 </div>
                 <div class="footer-right">
                     <p>BAKAS is a digital exploration of Philippine art through the history and culture surrounding it.</p>
+                    <p>Rather than viewing artworks in isolation, BAKAS connects each work to the people, ideas, events, and cultural influences that shaped its creation.</p>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+                        <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                        <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="brand-logo" style="font-size: 1.5rem;">BAKAS</div>
+                <div class="footer-links">
+                    <a href="#explore">EXPLORE</a>
+                    <a href="#eras">ERAS</a>
+                    <a href="#artists">ARTISTS</a>
+                </div>
+                <div>© 2026 BAKAS. elbancjd</div>
             </div>
         </div>
     </footer>
