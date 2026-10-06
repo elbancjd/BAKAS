@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+    
     /* --- MOBILE MENU LOGIC --- */
     const menuBtn = document.getElementById('menu-btn');
     const closeBtn = document.getElementById('close-btn');
@@ -16,14 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'auto';
     }
 
-    if(menuBtn) menuBtn.addEventListener('click', openMenu);
-    if(closeBtn) closeBtn.addEventListener('click', closeMenuLogic);
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenuLogic);
     
-    if(mobileMenu) {
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target === mobileMenu) closeMenuLogic();
-        });
-    }
+    mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) closeMenuLogic();
+    });
 
     mobileNavItems.forEach(item => {
         item.addEventListener('click', closeMenuLogic);
@@ -34,26 +32,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchDropdown = document.getElementById('search-dropdown');
     const desktopSearchBtn = document.getElementById('desktop-search-btn');
     const desktopSearchInput = document.getElementById('desktop-search-input');
+    const mobileSearchBtn = document.getElementById('mobile-search-btn');
+    const mobileSearchInput = document.getElementById('mobile-search-input');
 
-    if(searchToggle) {
-        searchToggle.addEventListener('click', () => {
-            searchDropdown.classList.toggle('active');
-            if(searchDropdown.classList.contains('active')){
-                desktopSearchInput.focus();
-            }
-        });
+    searchToggle.addEventListener('click', () => {
+        searchDropdown.classList.toggle('active');
+        if(searchDropdown.classList.contains('active')){
+            desktopSearchInput.focus();
+        }
+    });
+
+    function handleSearch(query) {
+        if(query.trim() !== '') {
+            alert(`Searching for: ${query}\n(Search functionality placeholder)`);
+            searchDropdown.classList.remove('active');
+        }
     }
 
-    if(desktopSearchBtn) {
-        desktopSearchBtn.addEventListener('click', () => {
-            if(desktopSearchInput.value.trim() !== '') {
-                alert(`Searching for: ${desktopSearchInput.value}`);
-                searchDropdown.classList.remove('active');
-            }
-        });
-    }
+    desktopSearchBtn.addEventListener('click', () => handleSearch(desktopSearchInput.value));
+    mobileSearchBtn.addEventListener('click', () => {
+        handleSearch(mobileSearchInput.value);
+        closeMenuLogic();
+    });
 
-    /* --- STICKY NAV & SCROLL SPY --- */
+
+    /* --- STICKY NAV & SCROLL SPY (Active Links) --- */
     const header = document.getElementById('main-header');
     const sections = document.querySelectorAll('.section-block');
     const navLinksDesktop = document.querySelectorAll('.nav-links .nav-item');
@@ -67,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let current = '';
+
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
             current = 'about';
         } else {
@@ -90,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLinks(navLinksDesktop);
         updateLinks(navLinksMobile);
     });
+
 
     /* --- FILTER BUTTONS LOGIC --- */
     function setupFilters(filterContainerId, galleryContainerId) {
@@ -117,12 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFilters('explore-filters', 'explore-gallery');
     setupFilters('artist-filters', 'artist-gallery');
 
-    /* --- HERO CAROUSEL AUTO-ROTATE (4 Images) --- */
+
+    /* --- HERO CAROUSEL INTERACTION --- */
     const carouselData = [
-        { main: 'https://via.placeholder.com/350x500/9F4E38/FFFFFF?text=Classic+Artwork+1', sub: 'https://via.placeholder.com/150x400/53667B/FFFFFF?text=Landscape+1' },
-        { main: 'https://via.placeholder.com/350x500/53667B/FFFFFF?text=Classic+Artwork+2', sub: 'https://via.placeholder.com/150x400/EAE2D6/1C1C1C?text=Sculpture+2' },
-        { main: 'https://via.placeholder.com/350x500/1C1C1C/FFFFFF?text=Modern+Art+3', sub: 'https://via.placeholder.com/150x400/9F4E38/FFFFFF?text=Portrait+3' },
-        { main: 'https://via.placeholder.com/350x500/EAE2D6/1C1C1C?text=Contemporary+4', sub: 'https://via.placeholder.com/150x400/1C1C1C/FFFFFF?text=Abstract+4' }
+        { main: 'Images/Artworks/Spoliarium.jpg', sub: 'Images/Artworks/Las Virgenes Cristianas.jpg' },
+        { main: 'Images/Artworks/Planting Rice.jpg', sub: 'Images/Artworks/The Builders.jpg' },
+        { main: 'Images/Artworks/Manunggul Jar.jpg', sub: 'Images/Artworks/Genesis.jpg' },
+        { main: 'Images/Artworks/Genesis.jpg', sub: 'Images/Artworks/Spoliarium.jpg' }
     ];
 
     let currentSlide = 0;
@@ -131,40 +137,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('next-slide');
     const prevBtn = document.getElementById('prev-slide');
 
-    if(mainImg && subImg) {
-        function updateCarousel(index) {
-            mainImg.style.opacity = 0;
-            subImg.style.opacity = 0;
-            setTimeout(() => {
-                mainImg.src = carouselData[index].main;
-                subImg.src = carouselData[index].sub;
-                mainImg.style.opacity = 1;
-                subImg.style.opacity = 1;
-            }, 200);
-        }
-
-        function autoSlide() {
-            currentSlide = (currentSlide + 1) % carouselData.length;
-            updateCarousel(currentSlide);
-        }
-
-        let slideInterval = setInterval(autoSlide, 7000);
-
-        if(nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                clearInterval(slideInterval);
-                autoSlide();
-                slideInterval = setInterval(autoSlide, 7000);
-            });
-        }
-
-        if(prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                clearInterval(slideInterval);
-                currentSlide = (currentSlide - 1 + carouselData.length) % carouselData.length;
-                updateCarousel(currentSlide);
-                slideInterval = setInterval(autoSlide, 7000);
-            });
-        }
+    function updateCarousel(index) {
+        mainImg.style.opacity = 0;
+        subImg.style.opacity = 0;
+        
+        setTimeout(() => {
+            mainImg.src = carouselData[index].main;
+            subImg.src = carouselData[index].sub;
+            mainImg.style.opacity = 1;
+            subImg.style.opacity = 1;
+        }, 200);
     }
+
+    function autoSlide() {
+        currentSlide = (currentSlide + 1) % carouselData.length;
+        updateCarousel(currentSlide);
+    }
+
+    // Auto rotate every 7 seconds
+    let slideInterval = setInterval(autoSlide, 7000);
+
+    // Reset interval
+    nextBtn.addEventListener('click', () => {
+        clearInterval(slideInterval);
+        autoSlide();
+        slideInterval = setInterval(autoSlide, 7000);
+    });
+
+    prevBtn.addEventListener('click', () => {
+        clearInterval(slideInterval);
+        currentSlide = (currentSlide - 1 + carouselData.length) % carouselData.length;
+        updateCarousel(currentSlide);
+        slideInterval = setInterval(autoSlide, 7000);
+    });
 });
