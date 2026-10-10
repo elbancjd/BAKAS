@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleSearch(query) {
         if (query.trim() !== '') {
-            alert(`Searching for: ${query}\n(Search functionality placeholder)`);
+            alert(`Searching for: ${query}\n(This is a placeholder action. Updates soon!)`);
             searchDropdown.classList.remove('active');
         }
     }
