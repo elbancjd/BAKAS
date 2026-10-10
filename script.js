@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     /* --- MOBILE MENU LOGIC --- */
     const menuBtn = document.getElementById('menu-btn');
     const closeBtn = document.getElementById('close-btn');
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openMenu() {
         mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden'; 
+        document.body.style.overflow = 'hidden';
     }
 
     function closeMenuLogic() {
@@ -18,13 +18,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     menuBtn.addEventListener('click', openMenu);
     closeBtn.addEventListener('click', closeMenuLogic);
-    
+
     mobileMenu.addEventListener('click', (e) => {
         if (e.target === mobileMenu) closeMenuLogic();
     });
 
     mobileNavItems.forEach(item => {
         item.addEventListener('click', closeMenuLogic);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeMenuLogic();
+            searchDropdown.classList.remove('active');
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 600) closeMenuLogic();
     });
 
     /* --- SEARCH BAR LOGIC --- */
@@ -37,13 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     searchToggle.addEventListener('click', () => {
         searchDropdown.classList.toggle('active');
-        if(searchDropdown.classList.contains('active')){
+        if (searchDropdown.classList.contains('active')) {
             desktopSearchInput.focus();
         }
     });
 
     function handleSearch(query) {
-        if(query.trim() !== '') {
+        if (query.trim() !== '') {
             alert(`Searching for: ${query}\n(Search functionality placeholder)`);
             searchDropdown.classList.remove('active');
         }
@@ -76,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (scrollY >= (sectionTop - 200)) { 
+                if (window.scrollY >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
                 }
             });
@@ -131,7 +142,13 @@ document.addEventListener('DOMContentLoaded', () => {
         { main: 'Images/Artworks/Genesis.jpg', sub: 'Images/Artworks/Spoliarium.jpg' }
     ];
 
+    carouselData.forEach(slide => {
+        new Image().src = slide.main;
+        new Image().src = slide.sub;
+    });
+
     let currentSlide = 0;
+    const FADE_MS = 400;
     const mainImg = document.getElementById('main-carousel-img');
     const subImg = document.getElementById('sub-carousel-img');
     const nextBtn = document.getElementById('next-slide');
@@ -140,13 +157,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCarousel(index) {
         mainImg.style.opacity = 0;
         subImg.style.opacity = 0;
-        
+
         setTimeout(() => {
             mainImg.src = carouselData[index].main;
             subImg.src = carouselData[index].sub;
             mainImg.style.opacity = 1;
             subImg.style.opacity = 1;
-        }, 200);
+        }, FADE_MS);
     }
 
     function autoSlide() {
@@ -157,17 +174,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Auto rotate every 7 seconds
     let slideInterval = setInterval(autoSlide, 7000);
 
-    // Reset interval
-    nextBtn.addEventListener('click', () => {
+    function restartInterval() {
         clearInterval(slideInterval);
-        autoSlide();
         slideInterval = setInterval(autoSlide, 7000);
+    }
+
+    nextBtn.addEventListener('click', () => {
+        autoSlide();
+        restartInterval();
     });
 
     prevBtn.addEventListener('click', () => {
-        clearInterval(slideInterval);
         currentSlide = (currentSlide - 1 + carouselData.length) % carouselData.length;
         updateCarousel(currentSlide);
-        slideInterval = setInterval(autoSlide, 7000);
+        restartInterval();
     });
 });
